@@ -1,0 +1,144 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   font-size: 11px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.sheet { 
+   position: relative;
+   width: 21cm;
+   height: 15.5cm;
+}
+
+.date-container {
+   position: absolute;
+   display: grid;
+   grid-template-columns: 2.4cm repeat(2, .9cm) 1fr;
+   place-items: center;
+   height: 7mm;
+   top: 2.2cm;
+   left: 13.7cm;
+}
+
+.date-container span:last-child {
+   padding-left: 5mm;
+}
+
+.client-data-container {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   gap: 2mm;
+   top: 4cm;
+   left: 1.3cm;
+}
+
+.client-data-container .name {
+   margin-left: calc(2.2cm + 1.2cm);
+   font-size: 13px;
+   font-weight: bold;
+} 
+
+.client-data-container .address, .client-data-container .phone {
+   margin-left: calc(1.3cm + 1.2cm);
+}
+
+.client-data-container .last-line {
+   display: flex;
+   position: relative;
+}
+
+.client-data-container .identification {
+   position: absolute;
+   width: 10rem;
+   left: 9.5cm;
+}
+
+.client-data-container .payment-x {
+   position: absolute;
+   left: 15.9cm;
+}
+
+.client-data-container .credit-days {
+   position: absolute;
+   left: 17.6cm;
+}
+
+
+.order-container {
+   background-color: white;
+   position: absolute;
+   display: grid;
+   grid-template-columns: 1.3cm 12.5cm 2.2cm 1fr;
+   width: 18.6cm;
+   height: 4.15cm;
+   left: 1.3cm;
+   top: 6.1cm;
+   padding-top: 2mm;
+}
+
+.order-container > div {
+   display: flex;
+   flex-direction: column;
+   gap: 2mm;
+}
+.quantity-container, .unit-price-container, .order-price {
+   justify-self: center;
+}
+
+.product-container {
+   padding-left: .5cm;
+   max-width: calc(100% - .5cm);
+   overflow-x: hidden;
+}
+
+.observations-container {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   gap: 1mm;
+   top: 12.6cm;
+   left: 1.3cm;
+   padding-left: 2cm;
+}
+
+.iva {
+   position: absolute;
+   top: 13.2cm;
+   left: 14.4cm;
+   transform: translate(-50%, calc(-100% - 1mm));
+}
+
+.price-container {
+   position: absolute;
+   width: 2.5cm;
+   height: 3.7cm;
+   display: grid;
+   grid-template: repeat(7, 1fr) / 1fr;
+   place-items: center;
+   left: 17.5cm;
+   top: 10.2cm;
+   padding: 1mm;
+}
+
+.subtotal {
+   align-self: start;
+   grid-row: 1 / 2;
+}
+
+.total-without-taxes {
+   grid-row: 5 / 6;
+}
+
+.taxes {
+   grid-row: 6 / 7;
+}
+
+.total-with-taxes {
+   grid-row: 7 / 8;
+}
