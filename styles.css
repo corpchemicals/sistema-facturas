@@ -42,6 +42,7 @@ html {
    margin-left: calc(2.2cm + 1.2cm);
    font-size: 13px;
    font-weight: bold;
+   text-transform: uppercase;
 } 
 
 .client-data-container .address, .client-data-container .phone {
@@ -68,7 +69,6 @@ html {
    position: absolute;
    left: 17.6cm;
 }
-
 
 .order-container {
    background-color: white;
@@ -141,4 +141,8 @@ html {
 
 .total-with-taxes {
    grid-row: 7 / 8;
+}
+
+select#category-select, select#product-select {
+   text-transform: uppercase;
 }

@@ -6,75 +6,83 @@
    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
    <link rel="stylesheet" href="./styles.css">
    <title>Sistema Facturas</title>
+   <script src="./index.js" defer></script>
 </head>
 <body>
-   <div class="sheet">
-      <div class="date-container">
-         <span>Valencia</span>
-         <span>11</span>
-         <span>02</span>
-         <span>2022</span>
-      </div>
+   <main>
+      <header>
+         <form>
+            <input type="text" id="bcv-rate">
+            <section class="data-inputs">
+               <input required type="text" class="manual-input" id="client-name">
+               <input required type="text" class="manual-input" id="client-address">
+               <input required type="text" class="manual-input" id="client-phone">
+               <input required type="text" class="manual-input" id="client-id">
+               <input required type="text" class="manual-input" id="note-number">
+            </section>
+            <section class="products-inputs">
+               <select name="category" id="category-select"></select>
+               <select name="product" id="product-select"></select>
+               <input type="number" name="quantity-input" id="quantity-input">
+               <button type="button" id="add-product-button">Agregar</button>
+            </section>
+         </form>
+      </header>
 
-      <div class="client-data-container">
-         <span class="name">DECOCERAMICA LA 21, C.A.</span>
-         <span class="address">Carrera 21 entre Calles 15 y 16 Local 15-30 Sector Centro. Barquisimeto</span>
-         <div class="last-line">
-            <span class="phone">0424-5250195</span>
-            <span class="identification">J-316658031</span>
-            <span class="payment-x">X</span>
-            <span class="credit-days">10</span>
+      <div class="sheet">
+         <div class="date-container">
+            <span>Valencia</span>
+            <span id="date-day">--</span>
+            <span id="date-month">--</span>
+            <span id="date-year">----</span>
+         </div>
+   
+         <div class="client-data-container">
+            <span class="name field" id="client-name-field"></span>
+            <span class="address field" id="client-address-field"></span>
+            <div class="last-line">
+               <span class="phone field" id="client-phone-field"></span>
+               <span class="identification field" id="client-id-field"></span>
+               <span class="payment-x">X</span>
+               <span class="credit-days">10</span>
+            </div>
+         </div>
+         
+         <div class="order-container">
+            <div class="quantity-container" id="quantity-container">
+            </div>
+   
+            <div class="product-container" id="product-container">
+            </div>
+   
+            <div class="unit-price-container" id="unit-price-container">
+            </div>
+   
+            <div class="order-price" id="order-price">
+            </div>
+         </div>
+   
+         <div class="observations-container">
+            <div>
+               Según Tasa BCV del 11/02/2022 Bs. 
+               <span class="field" id="bcv-rate-field"></span>
+            </div>
+            <span>Base Imponible: $41.16</span>
+            <div>
+               Note No.
+               <span class="field" id="note-number-field"></span>
+            </div>
+         </div>
+   
+         <span class="iva">16</span>
+   
+         <div class="price-container">
+            <span class="subtotal">186.04</span>
+            <span class="total-without-taxes">186.04</span>
+            <span class="taxes">29.77</span>
+            <span class="total-with-taxes">215.81</span>
          </div>
       </div>
-      
-      <div class="order-container">
-         <div class="quantity-container">
-            <span>50</span>
-            <span>50</span>
-            <span>50</span>
-            <span>50</span>
-            <span>50</span>
-         </div>
-
-         <div class="product-container">
-            <span>Oring NBR 216</span>
-            <span>Oring NBR 216</span>
-            <span>Oring NBR 216</span>
-            <span>Oring NBR 216</span>
-            <span>Oring NBR 216</span>
-         </div>
-
-         <div class="unit-price-container">
-            <span>1.13</span>
-            <span>1.13</span>
-            <span>1.13</span>
-            <span>1.13</span>
-            <span>1.13</span>
-         </div>
-
-         <div class="order-price">
-            <span>56.25</span>
-            <span>56.25</span>
-            <span>56.25</span>
-            <span>56.25</span>
-            <span>56.25</span>
-         </div>
-      </div>
-
-      <div class="observations-container">
-         <span>Según Tasa BCV del 11/02/2022 Bs. 4,52</span>
-         <span>Base Imponible: $41.16</span>
-         <span>Nota no.: 20</span>
-      </div>
-
-      <span class="iva">16</span>
-
-      <div class="price-container">
-         <span class="subtotal">186.04</span>
-         <span class="total-without-taxes">186.04</span>
-         <span class="taxes">29.77</span>
-         <span class="total-with-taxes">215.81</span>
-      </div>
-   </div>
+   </main>
 </body>
 </html>
