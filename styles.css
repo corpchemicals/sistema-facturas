@@ -9,10 +9,59 @@ html {
    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
+body {
+   width: 100%;
+   display: grid;
+   grid-template: 1fr / 1fr 1fr;
+   place-items: center;
+}
+
+form {
+   display: grid;
+   grid-template: 1fr / 1fr 1fr;
+   gap: 100px;
+   justify-items: center;
+   padding: 20px;
+   
+}
+
+input, select {
+   border: 2px solid black;
+   padding: 15px 20px;
+   border-radius: 40px;
+   min-width: 215px;
+}
+
+.data-inputs-container, .products-inputs {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+}
+
+.data-inputs-container input {
+   min-width: 300px;
+}
+
+.input-wrapper {
+   position: relative;
+}
+
+.input-wrapper label {
+   position: absolute;
+   background-color: white;
+   padding: 0 5px;
+   left: 25px;
+   transform: translateY(-50%);
+   font-size: 1.1rem;
+}
+
 .sheet { 
    position: relative;
    width: 21cm;
    height: 15.5cm;
+   border: 1px solid black;
+   border-radius: 20px;
 }
 
 .date-container {
@@ -150,5 +199,9 @@ select#category-select, select#product-select {
 @media print {
    header {
       display: none;
+   }
+
+   .sheet {
+      border: none;
    }
 } 

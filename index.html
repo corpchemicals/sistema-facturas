@@ -10,25 +10,53 @@
 </head>
 <body>
    <main>
-      <header>
          <form>
-            <input required type="text" class="manual-input" id="bcv-rate">
-            <section class="data-inputs">
-               <input required type="text" class="manual-input" id="client-name">
-               <input required type="text" class="manual-input" id="client-address">
-               <input required type="text" class="manual-input" id="client-phone">
-               <input required type="text" class="manual-input" id="client-id">
-               <input required type="text" class="manual-input" id="note-number">
+            <section class="data-inputs-container">
+               <h2>Datos de factura</h2>
+               <div class="input-wrapper">
+                  <label for="bcv-rate">Tasa del BCV</label>
+                  <input required type="text" class="manual-input" id="bcv-rate" name="bcv-rate">
+               </div>
+               <div class="input-wrapper">
+                  <label for="client-name">Nombre</label>
+                  <input required type="text" class="manual-input" id="client-name" name="client-name">
+               </div>
+               <div class="input-wrapper">
+                  <label for="client-address">Dirección</label>
+                  <input required type="text" class="manual-input" id="client-address" name="client-address">
+               </div>
+               <div class="input-wrapper">
+                  <label for="client-phone">Teléfono</label>
+                  <input required type="text" class="manual-input" id="client-phone" name="client-phone">
+               </div>
+               <div class="input-wrapper">
+                  <label for="client-id">Identificación</label>
+                  <input required type="text" class="manual-input" id="client-id" name="client-ide">
+               </div>
+               <div class="input-wrapper">
+                  <label for="note-number">Número de Nota</label>
+                  <input required type="text" class="manual-input" id="note-number" name="note-number">
+               </div>
             </section>
             <section class="products-inputs">
-               <select name="category" id="category-select"></select>
-               <select name="product" id="product-select"></select>
-               <input type="number" name="quantity-input" id="quantity-input">
+               <h2>Products</h2>
+               <div class="input-wrapper">
+                  <label for="category">Categoría</label>
+                  <select name="category" id="category-select"></select>
+               </div>
+               <div class="input-wrapper">
+                  <label for="product">Producto</label>
+                  <select name="product" id="product-select"></select>
+               </div>
+               <div class="input-wrapper">
+                  <label for="quantity-input">Cantidad</label>
+                  <input type="number" name="quantity-input" id="quantity-input">
+               </div>
                <button type="button" id="add-product-button">Agregar</button>
             </section>
          </form>
-      </header>
-
+   </main>
+   <footer>
       <div class="sheet">
          <div class="date-container">
             <span>Valencia</span>
@@ -72,7 +100,7 @@
                <span class="field" id="order-price-dollars"></span>
             </div>
             <div>
-               Note No.
+               Nota No.
                <span class="field" id="note-number-field"></span>
             </div>
          </div>
@@ -86,6 +114,6 @@
             <span class="total-with-taxes" id="total-with-taxes"></span>
          </div>
       </div>
-   </main>
+   </footer>
 </body>
 </html>
