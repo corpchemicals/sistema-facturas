@@ -12,7 +12,7 @@ html {
 body {
    width: 100%;
    display: grid;
-   grid-template: 1fr / 1fr 1fr;
+   grid-template: 1fr / 1fr;
    place-items: center;
 }
 
@@ -140,6 +140,15 @@ input, select {
    justify-self: center;
 }
 
+
+.trash-icon{
+   position: absolute;
+   width: 18px;
+   height: 18px;
+   left: 100%;
+   cursor: pointer;
+}
+
 .product-container {
    padding-left: .5cm;
    max-width: calc(100% - .5cm);
@@ -197,11 +206,21 @@ select#category-select, select#product-select {
 }
 
 @media print {
-   header {
+   main {
       display: none;
    }
 
    .sheet {
       border: none;
    }
+
+   .order-price > *::after {
+      display: none;
+   }
 } 
+
+@media (min-width: 40cm) {
+   body {
+      grid-template: 1fr / 1fr 1fr;
+   }
+}

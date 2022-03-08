@@ -1,6 +1,7 @@
 const $get = key => document.querySelector(key)
 const $getAll = key => document.querySelectorAll(key)
 const $create = element => document.createElement(element)
+const $remove = element => element.remove()
 const $removeAllChilds = parent => {
    while(parent.lastChild) {
       parent.removeChild(parent.lastChild)
@@ -72,9 +73,10 @@ function setCategorySelect(categories) {
    setProductSelect(categories[select.value])
 }
 
-function fillProductField(containerKey, innerText) {
+function fillProductField(containerKey, innerText, rowIndex) {
    const container = $get(containerKey)
    const span = $create("span")
+   span.classList.add(rowIndex)
    span.innerText = innerText
    container.append(span)
 }
@@ -82,24 +84,39 @@ function fillProductField(containerKey, innerText) {
 function setAddProductButton(data) {
    const button = $get("#add-product-button")
    let totalPrice = 0
+   let currentRow = 1
+
+   $get("#order-container").addEventListener("click", ({target}) => {
+      if(target.tagName == "IMG") {
+         const row = target.classList.item(0)
+         $getAll(`.${row}`).forEach(element => $remove(element))
+      }
+   })
+
    button.addEventListener("click", () => {
       const category = $get("#category-select").value
 
       const quantity = $get("#quantity-input").value
-      fillProductField("#quantity-container", quantity)
+      fillProductField("#quantity-container", quantity, `row${currentRow}`)
 
       const productIndex = +$get("#product-select").value
       const product = data[category][productIndex]
       const {name, uPrice} = product
-      fillProductField("#product-container", name)
+      fillProductField("#product-container", name.substring(0,75), `row${currentRow}`)
 
       const bcvRate = +$get("#bcv-rate").value
       const uPriceBs = uPrice * bcvRate
-      fillProductField("#unit-price-container", uPriceBs.toFixed(2))
+      fillProductField("#unit-price-container", uPriceBs.toFixed(2), `row${currentRow}`)
 
       const orderPriceBs = uPriceBs * quantity
-      fillProductField("#order-price", orderPriceBs.toFixed(2))
+      fillProductField("#order-price", orderPriceBs.toFixed(2), `row${currentRow}`)
       totalPrice += orderPriceBs
+
+      const trash = $create("img")
+      trash.alt = "ícono de basura"
+      trash.src = "./trash-icon.svg"
+      trash.classList.add(`row${currentRow}`, "trash-icon")
+      $get("#order-price span:last-child").append(trash)
 
       const subtotal = $get("#subtotal")
       subtotal.innerText = totalPrice.toFixed(2)
@@ -117,9 +134,10 @@ function setAddProductButton(data) {
 
       const orderPriceDollars = $get("#order-price-dollars")
       orderPriceDollars.innerText = (totalPrice / bcvRate).toFixed(2) + "$"
+
+      currentRow++
    })
 }
-
 
 async function app() {
    const apiURL = 'https://raw.githubusercontent.com/corpchemicals/products-list/main/products.json'
