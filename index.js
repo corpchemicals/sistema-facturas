@@ -85,6 +85,8 @@ function setAddProductButton(data) {
    const button = $get("#add-product-button")
    let totalPrice = 0
    let currentRow = 1
+   let rows = 0
+   const maxRows = 7
 
    $get("#order-container").addEventListener("click", ({target}) => {
       if(target.tagName == "IMG") {
@@ -94,6 +96,8 @@ function setAddProductButton(data) {
    })
 
    button.addEventListener("click", () => {
+      if(rows === maxRows) return alert("No se pueden ingresar más campos");
+      rows++
       const category = $get("#category-select").value
 
       const quantity = $get("#quantity-input").value

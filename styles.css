@@ -146,6 +146,7 @@ input, select {
    width: 18px;
    height: 18px;
    left: 100%;
+   transform: translateY(-3px);
    cursor: pointer;
 }
 
