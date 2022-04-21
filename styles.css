@@ -16,6 +16,10 @@ body {
    place-items: center;
 }
 
+main {
+   padding: 40px 20px;
+}
+
 form {
    display: grid;
    grid-template: 1fr / 1fr 1fr;
@@ -25,11 +29,57 @@ form {
    
 }
 
-input, select {
+input:not([type="checkbox"]), select {
    border: 2px solid black;
    padding: 15px 20px;
    border-radius: 40px;
    min-width: 215px;
+}
+
+.toggle-products-container-container {
+   display: flex;
+   width: 100%;
+   align-items: center;
+   gap: 20px;
+   justify-content: center; 
+}
+
+.toggle-products-container-container h3 {
+   font-size: 1.6rem;
+}
+
+.toggle-products-container {
+   position: relative;
+   width: 100px;
+   height: 50px;
+   border: 1px solid black;
+   border-radius: 40px;
+}
+
+.toggle-products-container #toggle-products {
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+}
+
+#toggle-products--item {
+   position: absolute;
+   left: 5px;
+   top: 50%;
+   transform: translate(0, -50%);
+   border-radius: 40px;
+   width: 40px;
+   height: 40px;
+   background-color: black;
+   transition: transform 200ms ease-in-out;
+}
+
+.toggle-products-container #toggle-products:checked + #toggle-products--item {
+   transform: translate(calc(100% + 7px), -50%);
+}
+
+.manual-wrapper {
+   display: none;
 }
 
 .data-inputs-container, .products-inputs {
@@ -140,16 +190,6 @@ input, select {
    justify-self: center;
 }
 
-
-.trash-icon{
-   position: absolute;
-   width: 18px;
-   height: 18px;
-   left: 100%;
-   transform: translateY(-3px);
-   cursor: pointer;
-}
-
 .product-container {
    padding-left: .5cm;
    max-width: calc(100% - .5cm);
@@ -200,6 +240,18 @@ input, select {
 
 .total-with-taxes {
    grid-row: 7 / 8;
+}
+
+button {
+   padding: 10px 20px;
+   font-size: 1.5rem;
+   border-radius: 20px;
+   border: 1px solid black;
+   cursor: pointer;
+}
+
+button:hover {
+   border: 2px solid black;
 }
 
 select#category-select, select#product-select {

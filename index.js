@@ -81,6 +81,24 @@ function fillProductField(containerKey, innerText, rowIndex) {
    container.append(span)
 }
 
+const toggleProductsInput = $get('#toggle-products')
+const automaticInputs = $getAll('.automatic-wrapper')
+const manualInputs = $getAll('.manual-wrapper')
+let isManual = false;
+
+toggleProductsInput.addEventListener("click", ({target}) => {
+   if(target.checked == true) {
+      automaticInputs.forEach(input => input.style.display = "none")
+      manualInputs.forEach(input => input.style.display = "block")
+      isManual = true
+   } else {
+      automaticInputs.forEach(input => input.style.display = "block")
+      manualInputs.forEach(input => input.style.display = "none")
+      isManual = false
+   }
+})
+
+
 function setAddProductButton(data) {
    const button = $get("#add-product-button")
    let totalPrice = 0
@@ -88,39 +106,50 @@ function setAddProductButton(data) {
    let rows = 0
    const maxRows = 7
 
-   $get("#order-container").addEventListener("click", ({target}) => {
-      if(target.tagName == "IMG") {
-         const row = target.classList.item(0)
-         $getAll(`.${row}`).forEach(element => $remove(element))
-      }
-   })
-
    button.addEventListener("click", () => {
-      if(rows === maxRows) return alert("No se pueden ingresar más campos");
+      if(rows === maxRows) {
+         Swal.fire({
+            icon: 'warning',
+            title: 'No se pueden ingresar más campos',
+            text: 'Realiza otra factura',
+          })
+          return;
+      }
       rows++
+      
       const category = $get("#category-select").value
-
+      const bcvRate = +$get("#bcv-rate").value
+      if(!bcvRate) {
+         Swal.fire({
+            icon: 'error',
+            title: 'Ocurrió un error',
+            text: 'Debes ingresar la tasa del BCV',
+          })
+          return;
+      }
       const quantity = $get("#quantity-input").value
+
+      // Add quantity
       fillProductField("#quantity-container", quantity, `row${currentRow}`)
 
-      const productIndex = +$get("#product-select").value
-      const product = data[category][productIndex]
-      const {name, uPrice} = product
-      fillProductField("#product-container", name.substring(0,75), `row${currentRow}`)
+      let uPriceBs;
+      let name;
+      if(isManual == false) {
+         const productIndex = +$get("#product-select").value
+         const product = data[category][productIndex]
+         uPriceBs = product.uPrice * bcvRate
+         name = product.name
+      } else {
+         name = $get("#kit-product-input").value
+         uPriceBs = +$get("#price-input").value * bcvRate
+      }
 
-      const bcvRate = +$get("#bcv-rate").value
-      const uPriceBs = uPrice * bcvRate
       fillProductField("#unit-price-container", uPriceBs.toFixed(2), `row${currentRow}`)
+      fillProductField("#product-container", name.substring(0,75), `row${currentRow}`)
 
       const orderPriceBs = uPriceBs * quantity
       fillProductField("#order-price", orderPriceBs.toFixed(2), `row${currentRow}`)
       totalPrice += orderPriceBs
-
-      const trash = $create("img")
-      trash.alt = "ícono de basura"
-      trash.src = "./trash-icon.svg"
-      trash.classList.add(`row${currentRow}`, "trash-icon")
-      $get("#order-price span:last-child").append(trash)
 
       const subtotal = $get("#subtotal")
       subtotal.innerText = totalPrice.toFixed(2)
@@ -150,7 +179,5 @@ async function app() {
    setCategorySelect(data)
    setAddProductButton(data)
 }
-
-
 
 app()

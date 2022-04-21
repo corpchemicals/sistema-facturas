@@ -6,55 +6,76 @@
    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
    <link rel="stylesheet" href="./styles.css">
    <title>Sistema Facturas</title>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script src="./index.js" defer></script>
 </head>
 <body>
    <main>
-         <form>
-            <section class="data-inputs-container">
-               <h2>Datos de factura</h2>
-               <div class="input-wrapper">
-                  <label for="bcv-rate">Tasa del BCV</label>
-                  <input required type="number" class="manual-input" id="bcv-rate" name="bcv-rate">
-               </div>
-               <div class="input-wrapper">
-                  <label for="client-name">Nombre</label>
-                  <input required type="text" class="manual-input" id="client-name" name="client-name">
-               </div>
-               <div class="input-wrapper">
-                  <label for="client-address">Dirección</label>
-                  <input required type="text" class="manual-input" id="client-address" name="client-address">
-               </div>
-               <div class="input-wrapper">
-                  <label for="client-phone">Teléfono</label>
-                  <input required type="tel" class="manual-input" id="client-phone" name="client-phone">
-               </div>
-               <div class="input-wrapper">
-                  <label for="client-id">Identificación</label>
-                  <input required type="tel" class="manual-input" id="client-id" name="client-ide">
-               </div>
-               <div class="input-wrapper">
-                  <label for="note-number">Número de Nota</label>
-                  <input required type="number" class="manual-input" id="note-number" name="note-number">
-               </div>
-            </section>
-            <section class="products-inputs">
-               <h2>Productos</h2>
-               <div class="input-wrapper">
-                  <label for="category">Categoría</label>
-                  <select name="category" id="category-select"></select>
-               </div>
-               <div class="input-wrapper">
-                  <label for="product">Producto</label>
-                  <select name="product" id="product-select"></select>
-               </div>
-               <div class="input-wrapper">
-                  <label for="quantity-input">Cantidad</label>
-                  <input type="number" name="quantity-input" id="quantity-input">
-               </div>
-               <button type="button" id="add-product-button">Agregar</button>
-            </section>
-         </form>
+      <div class="toggle-products-container-container">
+         <h3>Usar lista</h3>
+         <div class="toggle-products-container">
+            <input id="toggle-products" type="checkbox">
+            <label id="toggle-products--item"for="toggle-products"></label>
+         </div>
+         <h3>Escribir manual</h3>
+      </div>
+      <form>
+         <section class="data-inputs-container">
+            <h2>Datos de factura</h2>
+            <div class="input-wrapper">
+               <label for="bcv-rate">Tasa del BCV</label>
+               <input required type="number" class="manual-input" id="bcv-rate" name="bcv-rate">
+            </div>
+            <div class="input-wrapper">
+               <label for="client-name">Nombre</label>
+               <input required type="text" class="manual-input" id="client-name" name="client-name">
+            </div>
+            <div class="input-wrapper">
+               <label for="client-address">Dirección</label>
+               <input required type="text" class="manual-input" id="client-address" name="client-address">
+            </div>
+            <div class="input-wrapper">
+               <label for="client-phone">Teléfono</label>
+               <input required type="tel" class="manual-input" id="client-phone" name="client-phone">
+            </div>
+            <div class="input-wrapper">
+               <label for="client-id">Identificación</label>
+               <input required type="tel" class="manual-input" id="client-id" name="client-ide">
+            </div>
+            <div class="input-wrapper">
+               <label for="note-number">Número de Nota</label>
+               <input required type="number" class="manual-input" id="note-number" name="note-number">
+            </div>
+         </section>
+         <section class="products-inputs">
+            <h2>Productos</h2>
+            <!-- Automatic wrapper -->
+            <div class="input-wrapper automatic-wrapper">
+               <label for="category">Categoría</label>
+               <select name="category" id="category-select"></select>
+            </div>
+            <div class="input-wrapper automatic-wrapper">
+               <label for="product">Producto</label>
+               <select name="product" id="product-select"></select>
+            </div>
+            <!-- Manual wrapper -->
+            <div class="input-wrapper manual-wrapper">
+               <label for="kit-product-input">Producto en Kit</label>
+               <input type="text" name="kit-product-input" id="kit-product-input">
+            </div>
+
+            <div class="input-wrapper manual-wrapper">
+               <label for="price-input">Precio</label>
+               <input type="number" name="price-input" id="price-input">
+            </div>
+
+            <div class="input-wrapper">
+               <label for="quantity-input">Cantidad</label>
+               <input type="number" name="quantity-input" id="quantity-input">
+            </div>
+            <button type="button" id="add-product-button">Agregar</button>
+         </section>
+      </form>
    </main>
    <footer>
       <div class="sheet">
