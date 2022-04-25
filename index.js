@@ -144,7 +144,7 @@ function setAddProductButton(data) {
          uPriceBs = +$get("#price-input").value * bcvRate
       }
 
-      fillProductField("#unit-price-container", uPriceBs.toFixed(2), `row${currentRow}`)
+      fillProductField("#unit-price-container", uPriceBs.toFixed(3), `row${currentRow}`)
       fillProductField("#product-container", name.substring(0,75), `row${currentRow}`)
 
       const orderPriceBs = uPriceBs * quantity
@@ -179,5 +179,9 @@ async function app() {
    setCategorySelect(data)
    setAddProductButton(data)
 }
+
+$get("#print-button").addEventListener("click", () => {
+   window.print()
+})
 
 app()
