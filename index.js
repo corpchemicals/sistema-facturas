@@ -132,6 +132,7 @@ function setAddProductButton(data) {
       // Add quantity
       fillProductField("#quantity-container", quantity, `row${currentRow}`)
 
+      const discount = +$get("#discount-input").value / 100 
       let uPriceBs;
       let name;
       if(isManual == false) {
@@ -142,6 +143,10 @@ function setAddProductButton(data) {
       } else {
          name = $get("#kit-product-input").value
          uPriceBs = +$get("#price-input").value * bcvRate
+      }
+
+      if(discount) {
+         uPriceBs -= uPriceBs * discount
       }
 
       fillProductField("#unit-price-container", uPriceBs.toFixed(3), `row${currentRow}`)
