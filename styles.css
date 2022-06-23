@@ -120,7 +120,7 @@ input:not([type="checkbox"]), select {
    grid-template-columns: 2.4cm repeat(2, .9cm) 1fr;
    place-items: center;
    height: 7mm;
-   top: 2.3cm;
+   top: 2.2cm;
    left: 13.5cm;
 }
 
@@ -133,7 +133,7 @@ input:not([type="checkbox"]), select {
    display: flex;
    flex-direction: column;
    gap: 2mm;
-   top: 4cm;
+   top: 3.5cm;
    left: 1.3cm;
 }
 
@@ -177,7 +177,7 @@ input:not([type="checkbox"]), select {
    width: 18.6cm;
    height: 4.15cm;
    left: 1cm;
-   top: 6.1cm;
+   top: 6cm;
    padding-top: 2mm;
 }
 
@@ -201,14 +201,14 @@ input:not([type="checkbox"]), select {
    display: flex;
    flex-direction: column;
    gap: 1mm;
-   top: 12.4cm;
+   top: 12cm;
    left: 1.1cm;
    padding-left: 2cm;
 }
 
 .iva {
    position: absolute;
-   top: 13.5cm;
+   top: 13cm;
    left: 14cm;
    transform: translate(-50%, calc(-100% - 1mm));
 }
@@ -221,7 +221,7 @@ input:not([type="checkbox"]), select {
    grid-template: repeat(7, 1fr) / 1fr;
    place-items: center;
    left: 17.5cm;
-   top: 10.5cm;
+   top: 10cm;
    padding: 1mm;
 }
 
