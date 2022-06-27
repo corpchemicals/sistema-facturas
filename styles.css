@@ -120,7 +120,7 @@ input:not([type="checkbox"]), select {
    grid-template-columns: 2.4cm repeat(2, .9cm) 1fr;
    place-items: center;
    height: 7mm;
-   top: 2.2cm;
+   top: 1.7cm;
    left: 13.5cm;
 }
 
@@ -133,7 +133,7 @@ input:not([type="checkbox"]), select {
    display: flex;
    flex-direction: column;
    gap: 2mm;
-   top: 4cm;
+   top: 3.6cm;
    left: 1.3cm;
 }
 
@@ -177,7 +177,7 @@ input:not([type="checkbox"]), select {
    width: 18.6cm;
    height: 4.15cm;
    left: 1cm;
-   top: 6.3cm;
+   top: 5.5cm;
    padding-top: 2mm;
 }
 
