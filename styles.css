@@ -133,7 +133,7 @@ input:not([type="checkbox"]), select {
    display: flex;
    flex-direction: column;
    gap: 2mm;
-   top: 3.5cm;
+   top: 3.3cm;
    left: 1.3cm;
 }
 
@@ -177,7 +177,7 @@ input:not([type="checkbox"]), select {
    width: 18.6cm;
    height: 4.15cm;
    left: 1cm;
-   top: 5.3cm;
+   top: 5.1cm;
    padding-top: 2mm;
 }
 
