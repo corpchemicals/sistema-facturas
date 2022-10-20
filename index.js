@@ -152,7 +152,6 @@ function setAddProductButton(data) {
       fillProductField("#unit-price-container", uPriceBs.toFixed(3), `row${currentRow}`)
       fillProductField("#product-container", name.substring(0,75), `row${currentRow}`)
 
-      console.log(uPriceBs);
       const orderPriceBs = uPriceBs * quantity
       fillProductField("#order-price", orderPriceBs.toFixed(3), `row${currentRow}`)
       totalPrice += orderPriceBs
