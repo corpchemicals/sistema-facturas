@@ -138,7 +138,7 @@ function setAddProductButton(data) {
       if(isManual == false) {
          const productIndex = +$get("#product-select").value
          const product = data[category][productIndex]
-         uPriceBs = parseFloat((product.uPrice * bcvRate).toFixed(3))
+         uPriceBs = parseFloat((product.uPrice * bcvRate).toFixed(2))
          name = product.name
       } else {
          name = $get("#kit-product-input").value
@@ -149,29 +149,29 @@ function setAddProductButton(data) {
          uPriceBs -= uPriceBs * discount
       }
 
-      fillProductField("#unit-price-container", uPriceBs.toFixed(3), `row${currentRow}`)
+      fillProductField("#unit-price-container", uPriceBs.toFixed(2), `row${currentRow}`)
       fillProductField("#product-container", name.substring(0,75), `row${currentRow}`)
 
       const orderPriceBs = uPriceBs * quantity
-      fillProductField("#order-price", orderPriceBs.toFixed(3), `row${currentRow}`)
+      fillProductField("#order-price", orderPriceBs.toFixed(2), `row${currentRow}`)
       totalPrice += orderPriceBs
 
       const subtotal = $get("#subtotal")
-      subtotal.innerText = totalPrice.toFixed(3)
+      subtotal.innerText = totalPrice.toFixed(2)
 
       const totalWithoutTaxes = $get("#total-without-taxes")
-      totalWithoutTaxes.innerText = totalPrice.toFixed(3)
+      totalWithoutTaxes.innerText = totalPrice.toFixed(2)
 
       const taxes = $get("#taxes") 
       const iva = 16
       const taxesBs = (totalPrice * iva) / 100
-      taxes.innerText = taxesBs.toFixed(3)
+      taxes.innerText = taxesBs.toFixed(2)
 
       const totalWithTaxes = $get("#total-with-taxes")
-      totalWithTaxes.innerText = (taxesBs + totalPrice).toFixed(3)
+      totalWithTaxes.innerText = (taxesBs + totalPrice).toFixed(2)
 
       const orderPriceDollars = $get("#order-price-dollars")
-      orderPriceDollars.innerText = (totalPrice / bcvRate).toFixed(3) + "$"
+      orderPriceDollars.innerText = (totalPrice / bcvRate).toFixed(2) + "$"
 
       currentRow++
    })
